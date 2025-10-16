@@ -1,14 +1,7 @@
 import json
 
-# Open and read JSON file
-with open("data.json", "r") as f:
-    data = json.load(f)
 
-# Access values
-print(data)
-
-
-def recordcount:
+def recordcount(data):
     # The JSON string provided by the user
     json_string = '[{},{},{}]'
     try:
@@ -25,5 +18,17 @@ def recordcount:
     except json.JSONDecodeError:
         # Handle invalid JSON
         record_count = "Error decoding JSON"
+    print(record_count)
+    return record_count
 
-print(record_count)
+def main():    
+    # Open and read JSON file
+    with open("data.json", "r") as f:
+        data = json.load(f)
+    print(data)
+    return data
+    # Access values
+    
+if __name__ == "__main__":
+    json_data = main()
+    record_count= recordcount(json_data)
