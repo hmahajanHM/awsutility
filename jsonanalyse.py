@@ -5,6 +5,29 @@ s3 = session.client("s3")
 print(s3.list_buckets())
 
 
+eks_client = boto3.client('eks')
+
+    try:
+        # 2. Call the API to list cluster names. This returns a dict.
+        response = eks_client.list_clusters()
+
+        # 3. The cluster names are located under the 'clusters' key.
+        cluster_names = response.get('clusters', [])
+
+        if cluster_names:
+            print("Found EKS Clusters in this account/region:")
+            for name in cluster_names:
+                print(f"- {name}")
+        else:
+            print("No EKS clusters found in this account/region.")
+            
+        return cluster_names
+
+    except Exception as e:
+        print(f"An error occurred: {e}")
+        print("Please check your AWS credentials and region settings.")
+        return []
+
 import json
 import argparse
 import sys
