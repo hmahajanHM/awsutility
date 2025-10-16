@@ -59,7 +59,7 @@ def main():
 
     # 4. Access the value using the argument name ('filename')
     input_filename = args.filename
-
+    print(f"Input file to be processed: {input_filename}")
     try:
     # Open and read JSON file
         with open(input_filename, "r") as f:
