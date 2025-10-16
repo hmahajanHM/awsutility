@@ -46,7 +46,7 @@ def jsonrecordpropertycount(data):
             root_keys = list(record.keys())
         else:
             print(f"Record {index + 1}: Not a dictionary/object, type is {type(record).__name__}")
-    return root_keys
+    return (index+1)
     
 def recordcount(data):
     # The JSON string provided by the user
