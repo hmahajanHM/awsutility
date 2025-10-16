@@ -69,7 +69,6 @@ def main():
     # Open and read JSON file
         with open(input_filename, "r") as f:
             data = json.load(f)
-        print(data)
     except FileNotFoundError:
         print(f"Error: The file '{filename}' was not found.")
         sys.exit(1)
