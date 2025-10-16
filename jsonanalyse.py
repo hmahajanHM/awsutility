@@ -1,15 +1,30 @@
 import json
 import argparse
 import sys
+import os
+import platform
 
+def clear_screen():
+    """
+    Clears the console screen based on the operating system.
+    """
+    # Check the operating system
+    if platform.system() == "Windows":
+        # Command for Windows
+        os.system('cls')
+    else:
+        # Command for Linux and macOS (uses 'clear' command)
+        os.system('clear')
 
+# Example usage:
+# print("This will be cleared...")
+# input("Press Enter to clear the screen...")
+# clear_screen()
+# print("Screen cleared!")
 def recordcount(data):
     # The JSON string provided by the user
-    
     try:
         # Load the JSON string into a Python object (a list)
-        
-    
         # Count the number of elements in the list
         if isinstance(data, list):
             record_count = len(data)
@@ -20,7 +35,6 @@ def recordcount(data):
     except json.JSONDecodeError:
         # Handle invalid JSON
         record_count = "Error decoding JSON"
-    print(record_count)
     return record_count
 
 def main():    
@@ -62,5 +76,6 @@ def main():
     # Access values
 
 if __name__ == "__main__":
+    clear_screen()
     json_data = main()
     record_count= recordcount(json_data)
