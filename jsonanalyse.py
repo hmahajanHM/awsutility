@@ -16,11 +16,16 @@ def clear_screen():
         # Command for Linux and macOS (uses 'clear' command)
         os.system('clear')
 
-# Example usage:
-# print("This will be cleared...")
-# input("Press Enter to clear the screen...")
-# clear_screen()
-# print("Screen cleared!")
+def jsonrecordpropertycount(data):
+    for index, record in enumerate(data):
+        if isinstance(record, dict):
+            # The keys of the dictionary are the top-level properties (roots) of that record
+            root_keys = list(record.keys())
+            print(f"Record {index + 1}: {root_keys}")
+        else:
+            print(f"Record {index + 1}: Not a dictionary/object, type is {type(record).__name__}")
+    return root_keys
+    
 def recordcount(data):
     # The JSON string provided by the user
     try:
@@ -79,3 +84,4 @@ if __name__ == "__main__":
     clear_screen()
     json_data = main()
     record_count= recordcount(json_data)
+    property_count= jsonrecordpropertycount(json_data)
