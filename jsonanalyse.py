@@ -3,6 +3,29 @@ import argparse
 import sys
 import os
 import platform
+import json
+
+def count_null_property(json_data, property_name):
+    """
+    Counts the number of records where the specified property has a null value.
+
+    Args:
+        json_data (str): The JSON string containing a list of records.
+        property_name (str): The name of the property (key) to check for null values.
+
+    Returns:
+        int: The total count of records where the property is null.
+    """
+
+    null_count = 0
+
+    for record in json_data:
+        # 1. Check if the dictionary contains the key (the property_name)
+        # 2. Check if the value associated with that key is None (JSON null)
+        if isinstance(record, dict) and property_name in record and record[property_name] is None:
+            null_count += 1
+            
+    return null_count
 
 def clear_screen():
     """
@@ -100,3 +123,5 @@ if __name__ == "__main__":
     config_data= readconfig()
     record_count= recordcount(json_data)
     property_count= jsonrecordpropertycount(json_data)
+count_x = count_null_property(json_data, 'x')
+print(f"Count of records where 'x' is null: {count_x}")
