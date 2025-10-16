@@ -120,8 +120,8 @@ def main():
 if __name__ == "__main__":
     clear_screen()
     json_data = main()
-    config_data= readconfig()
+    
     record_count= recordcount(json_data)
     property_count= jsonrecordpropertycount(json_data)
-count_x = count_null_property(json_data, 'x')
-print(f"Count of records where 'x' is null: {count_x}")
+    count_x = count_null_property(json_data, 'x')
+    print(f"Count of records where 'x' is null: {count_x}")
