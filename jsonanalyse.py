@@ -41,6 +41,21 @@ def recordcount(data):
         # Handle invalid JSON
         record_count = "Error decoding JSON"
     return record_count
+    
+    
+def readconfig():
+    try:
+    # Open and read JSON file
+        with open("config", "r") as f:
+            configdata = json.load(f)
+    except FileNotFoundError:
+        print(f"Error: The file '{filename}' was not found.")
+        sys.exit(1)
+    except Exception as e:
+        print(f"An error occurred while processing the file: {e}")
+        sys.exit(1)
+    
+    return configdata
 
 def main():    
     # 1. Create the parser
@@ -82,5 +97,6 @@ def main():
 if __name__ == "__main__":
     clear_screen()
     json_data = main()
+    config_data= readconfig()
     record_count= recordcount(json_data)
     property_count= jsonrecordpropertycount(json_data)
