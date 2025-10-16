@@ -44,7 +44,6 @@ def jsonrecordpropertycount(data):
         if isinstance(record, dict):
             # The keys of the dictionary are the top-level properties (roots) of that record
             root_keys = list(record.keys())
-            print(f"Record {index + 1}: {root_keys}")
         else:
             print(f"Record {index + 1}: Not a dictionary/object, type is {type(record).__name__}")
     return root_keys
